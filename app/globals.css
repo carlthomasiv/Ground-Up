@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-cream:        #F5F0E8;
+  --color-ink:          #1A1612;
+  --color-warm-mid:     #7A6A58;
+  --color-roast:        #3D2B1F;
+  --color-roast-deep:   #2A1D14;
+  --color-accent:       #C4622D;
+  --color-accent-light: #E8A87C;
+  --color-muted:        #B5A898;
+  --color-sand:         #EDE8DF;
+
+  --font-display: 'Playfair Display', serif;
+  --font-mono:    'DM Mono', monospace;
+  --font-sans:    'DM Sans', sans-serif;
+
+  --radius:    2px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 4px;
+}
+
+:root {
+  --cream:        #F5F0E8;
+  --ink:          #1A1612;
+  --warm-mid:     #7A6A58;
+  --roast:        #3D2B1F;
+  --roast-deep:   #2A1D14;
+  --accent:       #C4622D;
+  --accent-light: #E8A87C;
+  --muted:        #B5A898;
+  --sand:         #EDE8DF;
+
+  --font-display: 'Playfair Display', serif;
+  --font-mono:    'DM Mono', monospace;
+  --font-sans:    'DM Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--roast-deep);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Scrollbar — minimal, on-brand */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(245,240,232,0.1); border-radius: 2px; }
