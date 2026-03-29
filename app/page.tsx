@@ -1,37 +1,14 @@
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { ShelfScreen } from '@/components/shelf/ShelfScreen'
+import type { Coffee } from '@/lib/supabase/types'
 
 export default async function HomePage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const supabase = createAdminClient()
 
-  return (
-    <main style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 16,
-    }}>
-      <h1 style={{
-        fontFamily: 'var(--font-display)',
-        fontSize: 72,
-        fontWeight: 700,
-        color: 'var(--cream)',
-        letterSpacing: '-0.02em',
-        lineHeight: 1,
-      }}>
-        Ground <em style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Up</em>
-      </h1>
-      <p style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: 10,
-        letterSpacing: '0.18em',
-        textTransform: 'uppercase',
-        color: 'var(--muted)',
-      }}>
-        {user ? `Signed in as ${user.email}` : 'Stack confirmed · Auth ready'}
-      </p>
-    </main>
-  )
+  const { data: coffees } = await supabase
+    .from('coffees')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+  return <ShelfScreen coffees={(coffees ?? []) as Coffee[]} />
 }
