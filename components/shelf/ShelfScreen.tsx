@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CoffeeCard, GhostCoffeeCard } from '@/components/coffee-card/CoffeeCard'
 import { statusConfig } from '@/lib/design-tokens'
@@ -183,6 +184,7 @@ interface ShelfScreenProps {
 }
 
 export function ShelfScreen({ coffees }: ShelfScreenProps) {
+  const router = useRouter()
   const [filters, setFilters] = useState<FilterState>({
     process:    null,
     origin:     null,
@@ -247,12 +249,13 @@ export function ShelfScreen({ coffees }: ShelfScreenProps) {
             Ground <em style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Up</em>
           </h1>
           <button
+            onClick={() => router.push('/scan')}
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 9,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--muted)',
+              color: 'var(--accent)',
               background: 'none',
               border: 'none',
               cursor: 'pointer',
